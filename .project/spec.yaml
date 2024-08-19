@@ -188,7 +188,7 @@ execution:
     icon_url: www.nvidia.com/favicon.ico
   resources:
     gpu:
-      requested: 0
+      requested: 1
     sharedMemoryMB: 1024
   secrets:
   - variable: NGC_API_KEY
