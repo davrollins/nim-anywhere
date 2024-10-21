@@ -64,9 +64,9 @@ async() => {
     if (! title.innerHTML.endsWith("🟢")) { title.innerHTML = title.innerHTML.slice(0,-2) + "🟢"; };
 }
 """
-_SAVE_IMG = IMG_DIR.joinpath("floppy.svg")
-_UNDO_IMG = IMG_DIR.joinpath("undo.svg")
-_HISTORY_IMG = IMG_DIR.joinpath("history.svg")
+_SAVE_IMG = IMG_DIR.joinpath("floppy.png")
+_UNDO_IMG = IMG_DIR.joinpath("undo.png")
+_HISTORY_IMG = IMG_DIR.joinpath("history.png")
 _PSEUDO_FILE_NAME = "config.yaml 🟢"
 with open(config.chain_config_file, "r", encoding="UTF-8") as config_file:
     _STARTING_CONFIG = config_file.read()
@@ -82,7 +82,9 @@ with gr.Blocks(theme=THEME, css=_CSS, head=mermaid.HEAD) as page:
                     use_kb = gr.Checkbox(USE_KB_INITIAL, label="Use knowledge base", interactive=True)
                     use_reranker = gr.Checkbox(USE_RERANKER_INITIAL, label="Use reranker", interactive=True)
             with gr.Row(elem_id="mmd-row"):
-                mmd = mermaid.to_gradio(_MMD.render(use_kb=use_kb, use_reranker=use_reranker, use_rewrite=False))
+                mmd = mermaid.to_gradio(
+                    _MMD.render(use_kb=USE_KB_INITIAL, use_reranker=USE_RERANKER_INITIAL, use_rewrite=False)
+                )
 
         # %% chain server configuration text box
         with gr.Accordion(label="Chain Server Configuration"):
